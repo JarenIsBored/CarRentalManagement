@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace CarRentalManagement.Server.Data.Migrations
+namespace CarRentalManagement.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -97,7 +97,7 @@ namespace CarRentalManagement.Server.Data.Migrations
                         {
                             Id = "3781efa7-66dc-47f0-860f-e506d04102e4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c3bf6568-ed70-409e-80b1-1811d407097c",
+                            ConcurrencyStamp = "143a6c1e-b9b7-4baf-b680-5c47e7b9abc5",
                             Email = "admin@localhost.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -105,9 +105,9 @@ namespace CarRentalManagement.Server.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBB4FL8pxfIH+BahI11+inu8Y/ZFFfSZA/s2i4oBILmb+UVZLC+Rt+e1+M00tlge4w==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAaBcz4qi7SUWygSuJxhUIo7mQyLsCwij/eLTWTml7rTosHDKtHVWRiAjm3hivwI7g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e26211a9-f8cb-4339-b951-8e1159681f41",
+                            SecurityStamp = "f544ed07-b2c0-4975-afb7-45cd2d0167f5",
                             TwoFactorEnabled = false,
                             UserName = "admin@localhost.com"
                         });
@@ -124,13 +124,14 @@ namespace CarRentalManagement.Server.Data.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int?>("CustomerId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateIn")
+                    b.Property<DateTime?>("DateIn")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DateOut")
@@ -142,7 +143,8 @@ namespace CarRentalManagement.Server.Data.Migrations
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("VehicleId")
+                    b.Property<int?>("VehicleId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -172,6 +174,7 @@ namespace CarRentalManagement.Server.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
@@ -186,8 +189,8 @@ namespace CarRentalManagement.Server.Data.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 11, 25, 15, 44, 14, 393, DateTimeKind.Local).AddTicks(2255),
-                            DateUpdated = new DateTime(2023, 11, 25, 15, 44, 14, 393, DateTimeKind.Local).AddTicks(2266),
+                            DateCreated = new DateTime(2024, 1, 6, 4, 31, 20, 709, DateTimeKind.Local).AddTicks(9142),
+                            DateUpdated = new DateTime(2024, 1, 6, 4, 31, 20, 709, DateTimeKind.Local).AddTicks(9166),
                             Name = "Black",
                             UpdatedBy = "System"
                         },
@@ -195,8 +198,8 @@ namespace CarRentalManagement.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 11, 25, 15, 44, 14, 393, DateTimeKind.Local).AddTicks(2269),
-                            DateUpdated = new DateTime(2023, 11, 25, 15, 44, 14, 393, DateTimeKind.Local).AddTicks(2270),
+                            DateCreated = new DateTime(2024, 1, 6, 4, 31, 20, 709, DateTimeKind.Local).AddTicks(9171),
+                            DateUpdated = new DateTime(2024, 1, 6, 4, 31, 20, 709, DateTimeKind.Local).AddTicks(9172),
                             Name = "Blue",
                             UpdatedBy = "System"
                         });
@@ -214,6 +217,7 @@ namespace CarRentalManagement.Server.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ContactNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedBy")
@@ -226,10 +230,22 @@ namespace CarRentalManagement.Server.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DrivingLicense")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmailAddress")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -257,6 +273,7 @@ namespace CarRentalManagement.Server.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
@@ -271,8 +288,8 @@ namespace CarRentalManagement.Server.Data.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 11, 25, 15, 44, 14, 393, DateTimeKind.Local).AddTicks(2709),
-                            DateUpdated = new DateTime(2023, 11, 25, 15, 44, 14, 393, DateTimeKind.Local).AddTicks(2711),
+                            DateCreated = new DateTime(2024, 1, 6, 4, 31, 20, 710, DateTimeKind.Local).AddTicks(1106),
+                            DateUpdated = new DateTime(2024, 1, 6, 4, 31, 20, 710, DateTimeKind.Local).AddTicks(1114),
                             Name = "BMW",
                             UpdatedBy = "System"
                         },
@@ -280,8 +297,8 @@ namespace CarRentalManagement.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 11, 25, 15, 44, 14, 393, DateTimeKind.Local).AddTicks(2713),
-                            DateUpdated = new DateTime(2023, 11, 25, 15, 44, 14, 393, DateTimeKind.Local).AddTicks(2713),
+                            DateCreated = new DateTime(2024, 1, 6, 4, 31, 20, 710, DateTimeKind.Local).AddTicks(1117),
+                            DateUpdated = new DateTime(2024, 1, 6, 4, 31, 20, 710, DateTimeKind.Local).AddTicks(1117),
                             Name = "Toyota",
                             UpdatedBy = "System"
                         });
@@ -305,6 +322,7 @@ namespace CarRentalManagement.Server.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedBy")
@@ -319,8 +337,8 @@ namespace CarRentalManagement.Server.Data.Migrations
                         {
                             Id = 1,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 11, 25, 15, 44, 14, 393, DateTimeKind.Local).AddTicks(2995),
-                            DateUpdated = new DateTime(2023, 11, 25, 15, 44, 14, 393, DateTimeKind.Local).AddTicks(2996),
+                            DateCreated = new DateTime(2024, 1, 6, 4, 31, 20, 710, DateTimeKind.Local).AddTicks(1625),
+                            DateUpdated = new DateTime(2024, 1, 6, 4, 31, 20, 710, DateTimeKind.Local).AddTicks(1626),
                             Name = "3 Series",
                             UpdatedBy = "System"
                         },
@@ -328,8 +346,8 @@ namespace CarRentalManagement.Server.Data.Migrations
                         {
                             Id = 2,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 11, 25, 15, 44, 14, 393, DateTimeKind.Local).AddTicks(2999),
-                            DateUpdated = new DateTime(2023, 11, 25, 15, 44, 14, 393, DateTimeKind.Local).AddTicks(2999),
+                            DateCreated = new DateTime(2024, 1, 6, 4, 31, 20, 710, DateTimeKind.Local).AddTicks(1629),
+                            DateUpdated = new DateTime(2024, 1, 6, 4, 31, 20, 710, DateTimeKind.Local).AddTicks(1630),
                             Name = "X5",
                             UpdatedBy = "System"
                         },
@@ -337,8 +355,8 @@ namespace CarRentalManagement.Server.Data.Migrations
                         {
                             Id = 3,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 11, 25, 15, 44, 14, 393, DateTimeKind.Local).AddTicks(3001),
-                            DateUpdated = new DateTime(2023, 11, 25, 15, 44, 14, 393, DateTimeKind.Local).AddTicks(3001),
+                            DateCreated = new DateTime(2024, 1, 6, 4, 31, 20, 710, DateTimeKind.Local).AddTicks(1632),
+                            DateUpdated = new DateTime(2024, 1, 6, 4, 31, 20, 710, DateTimeKind.Local).AddTicks(1633),
                             Name = "Prius",
                             UpdatedBy = "System"
                         },
@@ -346,8 +364,8 @@ namespace CarRentalManagement.Server.Data.Migrations
                         {
                             Id = 4,
                             CreatedBy = "System",
-                            DateCreated = new DateTime(2023, 11, 25, 15, 44, 14, 393, DateTimeKind.Local).AddTicks(3002),
-                            DateUpdated = new DateTime(2023, 11, 25, 15, 44, 14, 393, DateTimeKind.Local).AddTicks(3003),
+                            DateCreated = new DateTime(2024, 1, 6, 4, 31, 20, 710, DateTimeKind.Local).AddTicks(1636),
+                            DateUpdated = new DateTime(2024, 1, 6, 4, 31, 20, 710, DateTimeKind.Local).AddTicks(1637),
                             Name = "Rav4",
                             UpdatedBy = "System"
                         });
@@ -361,7 +379,8 @@ namespace CarRentalManagement.Server.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ColourId")
+                    b.Property<int?>("ColourId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
@@ -374,13 +393,19 @@ namespace CarRentalManagement.Server.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("LicensePlateNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MakeId")
+                    b.Property<int?>("MakeId")
+                        .IsRequired()
                         .HasColumnType("int");
 
-                    b.Property<int>("ModelId")
+                    b.Property<int?>("ModelId")
+                        .IsRequired()
                         .HasColumnType("int");
+
+                    b.Property<double>("RentalRate")
+                        .HasColumnType("float");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
